@@ -1,13 +1,14 @@
 import { ADD_TODO, EDIT_TODO, DELETE_TODO } from "../actions";
-import { combineReducers } from "redux";
-import { reducer as formReducer } from "redux-form";
 
 const initialState = {
-  todos: { 10: { title: "Take out the garbaggio", description: "blah blah" } },
+  todos: {
+    10: { title: "Take out the garbaggio", description: "blah blah" },
+    11: { title: "kdsfnklsdnfklds", description: "as.kndajkdbnj" }
+  },
   lastId: 0
 };
 
-function reducer(state = initialState, action) {
+export function reducer(state = initialState, action) {
   switch (action.type) {
     case ADD_TODO:
       const uid = state.lastId + 1;
@@ -24,8 +25,3 @@ function reducer(state = initialState, action) {
       return state;
   }
 }
-
-export default combineReducers({
-  state: reducer,
-  form: formReducer
-});
