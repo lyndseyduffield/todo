@@ -14,9 +14,7 @@ class AddTodo extends React.Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    const todo = this.state;
-    const action = addTodo(todo);
-    this.props.dispatch(action);
+    this.props.dispatch(addTodo(this.state));
   }
 
   render() {
