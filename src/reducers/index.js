@@ -16,7 +16,10 @@ export function reducer(state = initialState, action) {
     case EDIT_TODO:
       return {
         ...state,
-        todos: { ...state.todos, [action.value.id]: action.value.todo }
+        todos: {
+          ...state.todos,
+          [action.value.id]: action.value.todo
+        }
       };
     case DELETE_TODO:
       let { [action.value]: whatever, ...todos } = state.todos;

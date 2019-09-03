@@ -5,6 +5,7 @@ import { Provider } from "react-redux";
 import { createStore } from "redux";
 import { reducer } from "./reducers";
 
+//import history from "./history";
 import Router from "./components/Router";
 
 const store = createStore(reducer);

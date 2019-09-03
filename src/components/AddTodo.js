@@ -50,11 +50,10 @@ class AddTodo extends React.Component {
           >
             Submit
           </button>
-          <button className="ui button negative">Delete</button>
         </div>
       </form>
     );
   }
 }
 
-export default connect(null)(AddTodo);
+export default connect()(AddTodo);

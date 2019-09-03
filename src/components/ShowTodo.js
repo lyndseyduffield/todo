@@ -1,12 +1,10 @@
 import React from "react";
+import { connect } from "react-redux";
 
 class ShowTodo extends React.Component {
   state = {
-    todo: {
-      title: "take out the trash",
-      description: "you need to take the trash out because it smells like shit",
-      id: 1
-    }
+    title: this.props.todo.title,
+    description: this.props.todo.description
   };
 
   render() {
@@ -14,15 +12,22 @@ class ShowTodo extends React.Component {
       <form className="ui form">
         <div className="field">
           <label>Title</label>
-          <p>{this.state.todo.title}</p>
+          <p>{this.state.title}</p>
         </div>
         <div className="field">
           <label>Description</label>
-          <p>{this.state.todo.description}</p>
+          <p>{this.state.description}</p>
         </div>
       </form>
     );
   }
 }
 
-export default ShowTodo;
+const mapStateToProps = (state, ownProps) => {
+  const id = parseInt(ownProps.match.params.id, 10);
+  return {
+    todo: state.todos[id]
+  };
+};
+
+export default connect(mapStateToProps)(ShowTodo);

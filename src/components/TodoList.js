@@ -10,7 +10,7 @@ class TodoList extends React.Component {
         <Link to={`/show/${todo.id}`} className="item">
           <div className="content">
             <div className="header">{todo.title}</div>
-            <div class="description">{todo.description}</div>
+            <div className="description">{todo.description}</div>
           </div>
         </Link>
       );

@@ -1,3 +1,5 @@
+//import history from "../history";
+
 export const ADD_TODO = "ADD_TODO";
 export const EDIT_TODO = "EDIT_TODO";
 export const DELETE_TODO = "DELETE_TODO";
@@ -14,8 +16,8 @@ export const editTodo = (id, todo) => {
   const action = {
     type: EDIT_TODO,
     value: {
-      id,
-      todo
+      id: id,
+      todo: todo
     }
   };
   return action;
