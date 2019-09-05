@@ -5,16 +5,38 @@ import { connect } from "react-redux";
 class AddTodo extends React.Component {
   state = {
     title: "",
-    description: ""
+    description: "",
+    titleErr: ""
   };
 
   handleChange(key, value) {
     this.setState({ [key]: value });
   }
 
+  validate() {}
+
+  renderError() {
+    if (this.state.titleErr) {
+      return (
+        <div className="ui negative message">
+          <div className="header">{this.state.titleErr}</div>
+        </div>
+      );
+    }
+  }
+
   handleSubmit(event) {
     event.preventDefault();
-    this.props.dispatch(addTodo(this.state));
+    const todo = {
+      title: this.state.title,
+      description: this.state.description
+    };
+    if (this.state.title === "") {
+      this.setState({ titleErr: "Please enter a todo" });
+    } else {
+      this.props.dispatch(addTodo(todo));
+      this.props.history.push("/");
+    }
   }
 
   render() {
@@ -30,6 +52,7 @@ class AddTodo extends React.Component {
             placeholder="What do you need to do?"
           />
         </div>
+        {this.renderError()}
         <div className="field">
           <label>Description</label>
           <textarea

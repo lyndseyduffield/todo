@@ -19,6 +19,7 @@ class EditTodo extends React.Component {
     event.preventDefault();
     const id = parseInt(this.props.match.params.id, 10);
     this.props.dispatch(editTodo(id, this.state));
+    this.props.history.push("/");
   }
 
   render() {

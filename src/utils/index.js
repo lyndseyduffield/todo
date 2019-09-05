@@ -10,3 +10,11 @@ export const flattenTodos = todosObj => {
     };
   });
 };
+
+// [ { id, title, description } ]
+export const unflattenTodos = todosArray => {
+  const reducer = (obj, { id, title, description }) => {
+    return { ...obj, [id]: { title, description } };
+  };
+  return todosArray.reduce(reducer, {});
+};

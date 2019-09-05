@@ -1,4 +1,5 @@
 import { ADD_TODO, EDIT_TODO, DELETE_TODO } from "../actions";
+import { flattenTodos, unflattenTodos } from "../utils";
 
 const initialState = {
   todos: {
@@ -22,8 +23,15 @@ export function reducer(state = initialState, action) {
         }
       };
     case DELETE_TODO:
-      let { [action.value]: whatever, ...todos } = state.todos;
-      return { ...state, todos };
+      const newTodos = unflattenTodos(
+        flattenTodos(state.todos).filter(todo => {
+          return todo.id !== action.value;
+        })
+      );
+      return {
+        ...state,
+        todos: newTodos
+      };
     default:
       return state;
   }

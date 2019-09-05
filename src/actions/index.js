@@ -28,5 +28,6 @@ export const deleteTodo = id => {
     type: DELETE_TODO,
     value: id
   };
+  console.log(action.value);
   return action;
 };
