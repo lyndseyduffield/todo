@@ -3,8 +3,7 @@ import { flattenTodos, unflattenTodos } from "../utils";
 
 const initialState = {
   todos: {
-    10: { title: "Take out the garbaggio", description: "blah blah" },
-    11: { title: "kdsfnklsdnfklds", description: "as.kndajkdbnj" }
+    10: { title: "Take out the garbaggio", description: "it's stinky!!!" }
   },
   lastId: 0
 };
