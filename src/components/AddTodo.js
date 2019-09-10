@@ -13,8 +13,6 @@ class AddTodo extends React.Component {
     this.setState({ [key]: value });
   }
 
-  validate() {}
-
   renderError() {
     if (this.state.titleErr) {
       return (

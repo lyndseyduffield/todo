@@ -6,7 +6,8 @@ import Navbar from "./Navbar";
 class EditTodo extends React.Component {
   state = {
     title: this.props.todo.title,
-    description: this.props.todo.description
+    description: this.props.todo.description,
+    titleErr: ""
   };
 
   handleChange(key, value) {
@@ -15,11 +16,29 @@ class EditTodo extends React.Component {
     });
   }
 
+  renderError() {
+    if (this.state.titleErr) {
+      return (
+        <div className="ui negative message">
+          <div className="header">{this.state.titleErr}</div>
+        </div>
+      );
+    }
+  }
+
   handleSubmit(event) {
     event.preventDefault();
     const id = parseInt(this.props.match.params.id, 10);
-    this.props.dispatch(editTodo(id, this.state));
-    this.props.history.push("/");
+    const todo = {
+      title: this.state.title,
+      description: this.state.description
+    };
+    if (this.state.title === "") {
+      this.setState({ titleErr: "Please enter a todo" });
+    } else {
+      this.props.dispatch(editTodo(id, todo));
+      this.props.history.push("/");
+    }
   }
 
   render() {
@@ -36,6 +55,7 @@ class EditTodo extends React.Component {
             value={this.state.title}
           />
         </div>
+        {this.renderError()}
         <div className="field">
           <label>Description</label>
           <textarea

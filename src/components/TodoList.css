@@ -1,0 +1,19 @@
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto;
+}
+
+.flex-item {
+  display: flex;
+  justify-content: space-around;
+}
+
+.mini-flex {
+  display: flex;
+}
+
+.list-header {
+  text-align: center;
+  margin: 20px;
+}
